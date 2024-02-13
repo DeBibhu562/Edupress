@@ -1,0 +1,12 @@
+
+@media screen and (max-width:576px) {
+    .blog-content{
+        width: 100% !important;
+    }
+    .blog-ads{
+        width: 100% !important;
+    }
+    .recent-posts{
+        display: none;
+    }
+}

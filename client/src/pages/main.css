@@ -1,0 +1,198 @@
+@media screen and (max-width:576px) {
+.header-logo{
+ width: 200px !important;
+}
+}
+/* General Styles */
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    
+  }
+  
+  .about-us-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Default text color */
+  }
+  
+  .about-us-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left !important;
+  }
+  
+  .about-us-item {
+    margin-bottom: 30px;
+  }
+  
+  .about-us-item-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333; /* Default text color */
+  }
+  
+  .about-us-item-content {
+    color: #666; /* Default text color */
+  }
+  
+  .about-us-item-content a {
+    color: #007bff; /* Link color */
+  }
+  
+  /* Dark Mode */
+  .dark .about-us-container {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Dark text color */
+  }
+  
+  .dark .about-us-title,
+  .dark .about-us-item-title {
+    color: #fff; /* Dark text color */
+  }
+  
+  .dark .about-us-item-content {
+    color: #ccc; /* Dark text color */
+  }
+  
+  .dark .about-us-item-content a {
+    color: #66c2ff; /* Dark link color */
+  }
+  
+
+/* General Styles */
+.privacy-policy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .privacy-policy-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Default text color */
+  }
+  
+  .privacy-policy-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .privacy-policy-item {
+    margin-bottom: 30px;
+  }
+  
+  .privacy-policy-item-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333; /* Default text color */
+  }
+  
+  .privacy-policy-item-content {
+    color: #666; /* Default text color */
+  }
+  
+  .privacy-policy-contact-link {
+    color: #007bff; /* Link color */
+  }
+  
+  /* Dark Mode */
+  .dark .privacy-policy-container {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Dark text color */
+  }
+  
+  .dark .privacy-policy-title,
+  .dark .privacy-policy-item-title {
+    color: #fff; /* Dark text color */
+  }
+  
+  .dark .privacy-policy-item-content {
+    color: #ccc; /* Dark text color */
+  }
+  
+  .dark .privacy-policy-contact-link {
+    color: #66c2ff; /* Dark link color */
+  }
+
+  /* Light Mode Styles */
+.terms-and-conditions-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333333;
+  }
+  
+  .terms-and-conditions-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .terms-and-conditions-subheading {
+    font-size: 1.25rem;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  
+  .terms-and-conditions-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .terms-and-conditions-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .terms-and-conditions-sublist {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .terms-and-conditions-disclaimer {
+    font-style: italic;
+    color: #666666;
+  }
+  
+  /* Dark Mode Styles */
+  .dark .terms-and-conditions-container{
+    background-color: #333333;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .terms-and-conditions-heading {
+    color: #ffffff;
+  }
+  
+  .dark .terms-and-conditions-subheading {
+    color: #ffffff;
+  }
+  
+  .dark .terms-and-conditions-content {
+    color: #cccccc;
+  }
+  
+  .terms-and-conditions-list.dark {
+    color: #cccccc;
+  }
+  
+  .terms-and-conditions-sublist.dark {
+    color: #cccccc;
+  }
+  
+  .terms-and-conditions-disclaimer.dark {
+    color: #999999;
+  }
+  
+  

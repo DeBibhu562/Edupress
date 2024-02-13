@@ -1,0 +1,101 @@
+.post-custom table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.post-custom th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-custom tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.post-custom tr:nth-child(even) span {
+  background-color: #f2f2f2 !important;
+}
+.post-custom tr:nth-child(odd) span {
+  background-color: #ffffff !important;
+}
+
+.post-custom tr:hover {
+  background-color: #e2e2e2;
+}
+.post-custom tr:hover span {
+  background-color: #e2e2e2 !important;
+}
+
+.post-custom td {
+  border-right: 1px solid #ddd;
+}
+.post-custom td:last-child {
+  border-right: none;
+}
+.dark .post-custom tr:nth-child(even) {
+  background-color: #383744;
+}
+.dark .post-custom h3 {
+  color: #f4f2f2 !important;
+}
+.dark .post-custom tr:nth-child(odd) span {
+  background-color: #10172a !important;
+}
+.dark .post-custom tr:nth-child(even) span {
+  background-color: #444444 !important;
+}
+.dark .post-custom tr:hover {
+  background-color: #0a0a0a;
+}
+
+.dark .post-custom div,
+.dark .post-custom h1,
+.dark .post-custom h2,
+.dark .post-custom h3,
+.dark .post-custom h4,
+.dark .post-custom h5,
+.dark .post-custom p,
+.dark .post-custom ul,
+.dark .post-custom ol,
+.dark .post-custom span {
+  background-color: #10172a !important;
+  color: aliceblue !important; 
+}
+.dark .post-custom div:hover,
+.dark .post-custom h1:hover,
+.dark .post-custom h2:hover,
+.dark .post-custom h3:hover,
+.dark .post-custom h4:hover,
+.dark .post-custom h5:hover,
+.dark .post-custom p:hover,
+.dark .post-custom ul:hover,
+.dark .post-custom ol:hover,
+.dark .post-custom span:hover {
+  background-color: #10172a !important;
+  color: aliceblue !important ; 
+}
+/* .post-custom p{
+  line-height: 1rem !important;
+} */
+
+
+
+.dark .post-custom ul li,
+.dark .post-custom ol li {
+  margin-top: 10px !important;
+  list-style: decimal-leading-zero !important;
+  content: "\f067" !important;
+  color: var(--light-color) !important;
+  list-style-position: inside !important;
+}
+.post-custom ul li,
+.post-custom ol li {
+  margin-top: 10px !important;
+  margin-left: 1.5rem !important;
+  list-style: decimal-leading-zero !important;
+  content: "\f067" !important; 
+  color: var(--light-color) !important;
+  list-style-position: outside !important;
+}
