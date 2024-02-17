@@ -6,5 +6,7 @@
     .blog-ads{
         width: 100% !important;
     }
-    
+    .recent-posts{
+        display: none;
+    }
 }
