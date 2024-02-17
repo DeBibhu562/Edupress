@@ -28,7 +28,7 @@ export default function FooterCom() {
                   Our Blog
                 </Footer.Link>
                 <Footer.Link
-                  href='/about'
+                  href='/about-us'
                   target='_blank'
                   rel='noopener noreferrer'
                 >

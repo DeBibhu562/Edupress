@@ -334,6 +334,16 @@ export default function UpdatePost() {
             className="w-full h-72 object-cover"
           />
         )}
+        <TextInput
+            type='text'
+            placeholder='AdsLink'
+            value={formData.adslink}
+            id='adslink'
+            className='flex-1'
+            onChange={(value) =>
+              setFormData({ ...formData, adslink: value })
+            }
+          />
         <JoditEditor
           ref={editor2}
           value={formData.content}
