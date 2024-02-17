@@ -117,7 +117,7 @@ export default function PostPage() {
             </div>
           </div>
         </div>
-        <div className=" w-[35%] blog-ads p-3 md:p-1border-b md:border-l md:min-h-screen border-gray-500 md:order-first">
+        <div className=" w-[35%] blog-ads p-3 md:p-1 border-b md:border-l md:min-h-screen border-gray-500 md:order-first">
           <div className="sidebar-item recent-posts">
             <h3 className="sidebar-title">Recent Posts</h3>
             <div className="mt-3">
