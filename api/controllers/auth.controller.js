@@ -1,7 +1,9 @@
-import User from '../models/user.model.js';
-import bcryptjs from 'bcryptjs';
-import { errorHandler } from '../utils/error.js';
-import jwt from 'jsonwebtoken';
+import User from "../models/user.model.js";
+import bcryptjs from "bcryptjs";
+import { errorHandler } from "../utils/error.js";
+import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -10,11 +12,11 @@ export const signup = async (req, res, next) => {
     !username ||
     !email ||
     !password ||
-    username === '' ||
-    email === '' ||
-    password === ''
+    username === "" ||
+    email === "" ||
+    password === ""
   ) {
-    next(errorHandler(400, 'All fields are required'));
+    next(errorHandler(400, "All fields are required"));
   }
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -27,7 +29,7 @@ export const signup = async (req, res, next) => {
 
   try {
     await newUser.save();
-    res.json('Signup successful');
+    res.json("Signup successful");
   } catch (error) {
     next(error);
   }
@@ -36,18 +38,18 @@ export const signup = async (req, res, next) => {
 export const signin = async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email || !password || email === '' || password === '') {
-    next(errorHandler(400, 'All fields are required'));
+  if (!email || !password || email === "" || password === "") {
+    next(errorHandler(400, "All fields are required"));
   }
 
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) {
-      return next(errorHandler(404, 'User not found'));
+      return next(errorHandler(404, "User not found"));
     }
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) {
-      return next(errorHandler(400, 'Invalid password'));
+      return next(errorHandler(400, "Invalid password"));
     }
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin },
@@ -58,10 +60,131 @@ export const signin = async (req, res, next) => {
 
     res
       .status(200)
-      .cookie('access_token', token, {
+      .cookie("access_token", token, {
         httpOnly: true,
       })
       .json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+function sendEmail({ recipient_email, OTP }) {
+  return new Promise((resolve, reject) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "bibhude2@gmail.com",
+        pass: "uwthbjpzettzgemb",
+      },
+    });
+
+    const mail_configs = {
+      from: "bibhude2@gmail.com",
+      to: recipient_email,
+      subject: " PASSWORD RECOVERY",
+      html: `<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>OTP Email For Reset Password</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+  <div style="margin:50px auto;width:70%;padding:20px 0">
+    <div style="border-bottom:1px solid #eee">
+      <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">The Education Press</a>
+    </div>
+    <p style="font-size:1.1em">Hi,</p>
+    <p>Thank you for choosing The Education Press. Use the following OTP to complete your Password Recovery Procedure. OTP is valid for 5 minutes</p>
+    <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${OTP}</h2>
+    <p style="font-size:0.9em;">Regards,<br />The Education Press</p>
+    <hr style="border:none;border-top:1px solid #eee" />
+    <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+      <p>The Education Press</p>
+      <p>Delhi</p>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>`,
+    };
+    transporter.sendMail(mail_configs, function (error, info) {
+      if (error) {
+        console.log(error);
+        return reject({ message: `An error has occured` });
+      }
+      return resolve({ message: "Email sent succesfuly" });
+    });
+  });
+}
+
+export const resetpass = async (req, res, next) => {
+  const { email, Otp } = req.body;
+
+  if (!email) {
+    return next(errorHandler(403, "Please Enter your email"));
+  }
+  try {
+    const validUser = await User.findOne({ email });
+    if (!validUser) {
+      return next(errorHandler(404, `User not found try again`));
+    } else {
+      try {
+        await sendEmail({ recipient_email: email, OTP: Otp });
+        res
+          .status(200)
+          .json({ message: `password has been sent to your email ${email}` });
+      } catch (error) {
+        return next(error);
+      }
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const setnewpass = async (req, res, next) => {
+  const { email, password } = req.body;
+  console.log(email);
+  console.log(password);
+
+  if (!email) {
+    return next(errorHandler(403, "Please Enter your email"));
+  }
+  try {
+    const validUser = await User.findOne({ email });
+    console.log(validUser);
+    const id = validUser._id.toString();
+    console.log(id);
+    if (!validUser) {
+      return next(errorHandler(404, `User not found try again ${email}`));
+    }
+    const hashedPassword = bcryptjs.hashSync(req.body.password, 10);
+    console.log(hashedPassword);
+
+    try {      
+      const setNewPass = await User.findOneAndUpdate(
+        {email:email},
+        {
+          $set: {
+            password: hashedPassword,
+          },
+        },
+        { new: true }
+      );
+      const { password, ...rest } = setNewPass.toObject();
+      res.status(200).json(rest);
+    } catch (error) {
+      next(error);
+      console.error("An error occurred:", error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
   } catch (error) {
     next(error);
   }
@@ -79,7 +202,7 @@ export const google = async (req, res, next) => {
       const { password, ...rest } = user._doc;
       res
         .status(200)
-        .cookie('access_token', token, {
+        .cookie("access_token", token, {
           httpOnly: true,
         })
         .json(rest);
@@ -90,7 +213,7 @@ export const google = async (req, res, next) => {
       const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
       const newUser = new User({
         username:
-          name.toLowerCase().split(' ').join('') +
+          name.toLowerCase().split(" ").join("") +
           Math.random().toString(9).slice(-4),
         email,
         password: hashedPassword,
@@ -104,7 +227,7 @@ export const google = async (req, res, next) => {
       const { password, ...rest } = newUser._doc;
       res
         .status(200)
-        .cookie('access_token', token, {
+        .cookie("access_token", token, {
           httpOnly: true,
         })
         .json(rest);

@@ -18,6 +18,8 @@ import PrivacyPolicy from './pages/PrivicyPolicy';
 import TermsCondition from './pages/TermsCondition';
 import GuestPost from './pages/GuestPost';
 import ContactUs from './pages/ContactUs';
+import ResetEmailInp from './pages/ResetEmailnp';
+import Reset from './pages/Reset';
 
 export default function App() {
   return (
@@ -34,6 +36,8 @@ export default function App() {
         <Route path='/guest-post' element={<GuestPost />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/reset-email' element={<ResetEmailInp />} />
+        <Route path='/set-new-pass' element={<Reset />} />
         <Route path='/search' element={<Search />} />
         <Route element={<PrivateRoute />}>
           <Route path='/dashboard' element={<Dashboard />} />

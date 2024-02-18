@@ -3,10 +3,12 @@ import userReducer from './user/userSlice';
 import themeReducer from './theme/themeSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import resetPasswordReducer from './user/resetPasswordSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
   theme: themeReducer,
+  resetpass:resetPasswordReducer,
 });
 
 const persistConfig = {
