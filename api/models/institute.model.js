@@ -13,7 +13,7 @@ const ventureSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ["School", "College", "Coaching", "Others"],
+      enum: ["School", "College", "Coaching Institute", "Others"],
       required: true,
     },
     owner: {
