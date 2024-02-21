@@ -5,10 +5,7 @@ import CallToAction from "../components/CallToAction";
 import CommentSection from "../components/CommentSection";
 import VenturexCard from "../components/VenturexCard";
 import { Helmet } from "react-helmet";
-import AddsCarousel from "../components/AddsCarousel";
-import RelatedArticle from "../components/RelatedArticle";
 import "./PostPage.css";
-import TOC from "../components/Toc";
 
 export default function InstitutePage() {
   const { instituteSlug } = useParams();
@@ -22,9 +19,10 @@ export default function InstitutePage() {
     const fetchInstitute = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/institute/getinstitute?slug=${instituteSlug}`);
+        const res = await fetch(
+          `/api/institute/getInstitute?slug=${instituteSlug}`
+        );
         const data = await res.json();
-        console.log(data.institute[0])
         if (!res.ok) {
           setError(true);
           setLoading(false);
@@ -46,7 +44,7 @@ export default function InstitutePage() {
   useEffect(() => {
     try {
       const fetchRecentInstitutes = async () => {
-        const res = await fetch(`/api/institute/getinstitute?limit=3`);
+        const res = await fetch(`/api/institute/getInstitute?limit=3`);
         const data = await res.json();
         if (res.ok) {
           setRecentInstitutes(data.institute);
@@ -64,41 +62,75 @@ export default function InstitutePage() {
         <Spinner size="xl" />
       </div>
     );
-    console.log(institute)
   return (
     <main className="p-3 flex flex-col max-w-7xl mx-auto min-h-screen post-custom">
       <Helmet>
         <meta charSet="utf-8" />
         <title>{institute.name}</title>
         <meta name="description" content={institute.about} />
-        <link rel="canonical" href={`http://localhost:5173/institute/${instituteSlug}`} />
+        <link
+          rel="canonical"
+          href={`https://www.theeducationpress.com/institute/${instituteSlug}`}
+        />
       </Helmet>
 
-      <div className="flex flex-col-reverse md:flex-row-reverse">
-        <div className="w-[65%] blog-content">
+      <div className="flex justify-center">
+        <div className="w-[100%]">
           <h1 className="text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl">
             {institute && institute.name}
           </h1>
-          {/* <TOC key={institute._id} instituteContent={institute.content} setModifiedContent={setModifiedContent} /> */}
 
           <Link
             to={`/search?category=${institute && institute.category}`}
-            className="self-center mt-5"
+            className="flex justify-center mt-5"
           >
             <Button color="gray" pill size="xs">
               {institute && institute.category}
             </Button>
           </Link>
           <div className="flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs">
-            <span>{institute && new Date(institute.createdAt).toLocaleDateString()}</span>
+            <span>
+              {institute && new Date(institute.createdAt).toLocaleDateString()}
+            </span>
             <span className="italic">
-              {institute && (institute.about.length / 1000).toFixed(0)} mins read
+              {institute && (institute.about.length / 10).toFixed(0)} mins
+              read
             </span>
           </div>
-          <div
-            className="p-3 max-w-2xl mx-auto w-full post-content"
-            dangerouslySetInnerHTML={{ __html:modifiedContent }}
-          ></div>
+          <div className="p-3 max-w-2xl mx-auto w-full post-content">
+            <p>{institute && institute.about}</p>
+            <p>{institute && institute.establishment}</p>
+            <h2>Courses Offered:</h2>
+            <p>Fees: {institute && institute.fees}</p>
+            <ul>
+              {institute && institute.courses.map((course, index) => (
+                <li key={index}>{course}</li>
+              ))}
+            </ul>
+            <h2>Teachers:</h2>
+            <ul>
+              {institute && institute.teachers.map((teacher, index) => (
+                <li key={index}>{teacher}</li>
+              ))}
+            </ul>
+            <h2>Operating Hours:</h2>
+            <ul>
+              {institute && institute.hours.map((hour, index) => (
+                <li key={index}>{hour.day}: {hour.open} - {hour.close}</li>
+              ))}
+            </ul>
+            <h2>Results:</h2>
+            <p>{institute && institute.results}</p>
+            <h2>Contact Information:</h2>
+            <p>Email: {institute && institute.email}</p>
+            <p>Contact: {institute && institute.contact}</p>
+            <p>Website: {institute && institute.website}</p>
+            <p>Facebook: {institute && institute.facebook}</p>
+            <p>Youtube: {institute && institute.youtube}</p>
+            <p>Instagram: {institute && institute.instagram}</p>
+            <h2>Address:</h2>
+            <p>{institute && institute.address}</p>
+          </div>
           <div className="max-w-4xl mx-auto w-full">
             <CallToAction />
           </div>
@@ -114,17 +146,6 @@ export default function InstitutePage() {
             </div>
           </div>
         </div>
-        {/* <div className=" w-[35%] blog-ads p-3 md:p-1 border-b md:border-l md:min-h-screen border-gray-500 md:order-first">
-          <div className="sidebar-item recent-posts">
-            <h3 className="sidebar-title">Recent institutes</h3>
-            <div className="mt-3">
-              {recentInstitutes &&
-                recentInstitutes.map((institute) => (
-                  <RelatedArticle key={institute._id} Institute={institute} />
-                ))}
-            </div>
-          </div>
-        </div> */}
       </div>
     </main>
   );
