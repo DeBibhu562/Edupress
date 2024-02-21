@@ -40,6 +40,7 @@ export default function App() {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/list-business' element={<CreateVentureX />} />
+        <Route path='/update-institute/:postId' element={<UpdateVentureX />} />
         <Route path='/reset-email' element={<ResetEmailInp />} />
         <Route path='/set-new-pass' element={<Reset />} />
         <Route path='/search' element={<Search />} />
@@ -49,7 +50,6 @@ export default function App() {
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path='/create-post' element={<CreatePost />} />
           <Route path='/update-post/:postId' element={<UpdatePost />} />
-          <Route path='/update-institute/:postId' element={<UpdateVentureX />} />
         </Route>
 
         <Route path='/projects' element={<Projects />} />

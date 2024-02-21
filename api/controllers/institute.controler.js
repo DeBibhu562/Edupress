@@ -2,9 +2,6 @@ import Venture from "../models/institute.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const createInstitute = async (req, res, next) => {
-  if (!req.user.isAdmin) {
-    return next(errorHandler(403, "You are not allowed to create a post"));
-  }
   if (!req.body.name || !req.body.about) {
     return next(errorHandler(400, "Please provide all required fields"));
   }
@@ -72,9 +69,6 @@ export const getInstitute = async (req, res, next) => {
 };
 
 export const deleteInstitute = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, "You are not allowed to delete this post"));
-  }
   try {
     await Venture.findByIdAndDelete(req.params.postId);
     res.status(200).json("The post has been deleted");
@@ -84,9 +78,6 @@ export const deleteInstitute = async (req, res, next) => {
 };
 
 export const updateInstitute = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, "You are not allowed to update this post"));
-  }
   try {
     const updatedInstitute = await Venture.findByIdAndUpdate(
       req.params.postId,

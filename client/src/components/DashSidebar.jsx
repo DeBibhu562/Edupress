@@ -77,7 +77,6 @@ export default function DashSidebar() {
               </Sidebar.Item>
             </Link>
           )}
-          {currentUser.isAdmin && (
             <Link to='/dashboard?tab=institutes'>
               <Sidebar.Item
                 active={tab === 'institutes'}
@@ -87,7 +86,6 @@ export default function DashSidebar() {
                 Institutes
               </Sidebar.Item>
             </Link>
-          )}
           {currentUser.isAdmin && (
             <>
               <Link to='/dashboard?tab=users'>
