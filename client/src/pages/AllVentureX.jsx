@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import CallToAction from "../components/CallToAction";
 import VenturexCard from "../components/VenturexCard";
 import { Button } from "flowbite-react";
+import { useSelector } from "react-redux";
 
 export default function AllVentureX() {
+  const { currentUser } = useSelector((state) => state.user);
   const [institutes, setInstitutes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMore, setShowMore] = useState(true);
@@ -67,18 +69,33 @@ export default function AllVentureX() {
           {!loading &&
             institutes &&
             institutes.map((institute) => (
-              <VenturexCard key={institute._id} institute={institute} />
+              <VenturexCard key={institute.name} institute={institute} />
             ))}
         </div>
-        {showMore && (
-          <Button
-            onClick={handleShowMore}
-            className="text-lg p-1 "
-            gradientMonochrome="cyan"
-          >
-            Show More
-          </Button>
-        )}
+        <div className="flex justify-center">
+          {showMore && (
+            <Button
+              onClick={handleShowMore}
+              className="text-lg p-1 "
+              gradientMonochrome="cyan"
+            >
+              Show More
+            </Button>
+          )}
+        </div>
+        <div className="flex justify-center mt-2">
+          {currentUser && (
+            <Link to={"/list-business"}>
+              <Button
+                type="button"
+                gradientDuoTone="purpleToPink"
+                className="w-full"
+              >
+                List Your Business
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
       <CallToAction />
     </div>
