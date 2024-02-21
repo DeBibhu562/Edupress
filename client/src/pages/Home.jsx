@@ -16,10 +16,10 @@ export default function Home() {
   }, []);
   return (
     <div>
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to The Education press </h1>
+      <div className='flex flex-col gap-6 p-4 px-3 max-w-6xl mx-auto '>
+        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to The Education Press </h1>
         <p className='text-gray-500  sm:text-sm text-lg lg:text-2xl'>
-          Indian's Biggest Educational Based Newspeper | Since 1986.
+          Indian's Biggest Educational Based Newspaper | Since 1986.
         </p>
         <Link
           to='/search'

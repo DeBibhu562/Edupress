@@ -20,6 +20,9 @@ import GuestPost from './pages/GuestPost';
 import ContactUs from './pages/ContactUs';
 import ResetEmailInp from './pages/ResetEmailnp';
 import Reset from './pages/Reset';
+import CreateVentureX from './pages/CreateVentureX';
+import UpdateVentureX from './pages/UpdateVentureX';
+import InstitutePage from './pages/InstitutePage';
 
 export default function App() {
   return (
@@ -36,6 +39,7 @@ export default function App() {
         <Route path='/guest-post' element={<GuestPost />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/list-business' element={<CreateVentureX />} />
         <Route path='/reset-email' element={<ResetEmailInp />} />
         <Route path='/set-new-pass' element={<Reset />} />
         <Route path='/search' element={<Search />} />
@@ -45,10 +49,12 @@ export default function App() {
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path='/create-post' element={<CreatePost />} />
           <Route path='/update-post/:postId' element={<UpdatePost />} />
+          <Route path='/update-institute/:postId' element={<UpdateVentureX />} />
         </Route>
 
         <Route path='/projects' element={<Projects />} />
         <Route path='/post/:postSlug' element={<PostPage />} />
+        <Route path='/institute/:instituteSlug' element={<InstitutePage/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
