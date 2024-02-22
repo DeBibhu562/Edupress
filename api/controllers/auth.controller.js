@@ -151,22 +151,17 @@ export const resetpass = async (req, res, next) => {
 
 export const setnewpass = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email);
-  console.log(password);
 
   if (!email) {
     return next(errorHandler(403, "Please Enter your email"));
   }
   try {
     const validUser = await User.findOne({ email });
-    console.log(validUser);
     const id = validUser._id.toString();
-    console.log(id);
     if (!validUser) {
       return next(errorHandler(404, `User not found try again ${email}`));
     }
     const hashedPassword = bcryptjs.hashSync(req.body.password, 10);
-    console.log(hashedPassword);
 
     try {      
       const setNewPass = await User.findOneAndUpdate(
