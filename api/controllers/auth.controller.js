@@ -74,13 +74,13 @@ function sendEmail({ recipient_email, OTP }) {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "bibhude2@gmail.com",
-        pass: "uwthbjpzettzgemb",
+        user: "theeducationpressinfo@gmail.com",
+        pass: "olegtbxpdhkfzsmi",
       },
     });
 
     const mail_configs = {
-      from: "bibhude2@gmail.com",
+      from: "theeducationpressinfo@gmail.com",
       to: recipient_email,
       subject: " PASSWORD RECOVERY",
       html: `<!DOCTYPE html>
