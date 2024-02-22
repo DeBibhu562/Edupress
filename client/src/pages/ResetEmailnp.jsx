@@ -24,12 +24,10 @@ export default function ResetEmailInp() {
   const handleChange = (e) => {
     dispatch(emailStart());
     dispatch(emailSuccess(e.target.value));
-    console.log(email);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const OTP = Math.floor(Math.random() * 9000 + 1000);
-    console.log(OTP);
     dispatch(otpStart());
 
     if (!email) {
@@ -44,7 +42,6 @@ export default function ResetEmailInp() {
         body: JSON.stringify({email:email, Otp:OTP}),
       });
       const data = await res.json();
-      console.log(data);
       if (data.success === false) {
         dispatch(emailFailure(data.message));
       }
@@ -57,12 +54,11 @@ export default function ResetEmailInp() {
     e.preventDefault();
     if (disable) return;
     const OTP = Math.floor(Math.random() * 9000 + 1000);
-    console.log(OTP);
     dispatch(otpStart());
     try {
       dispatch(emailStart());
       dispatch(otpSuccess(OTP));
-      const res = await fetch("/api/auth/reset", {
+      const res = await fetch("/api/auth/resetpass", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, Otp: OTP }),
@@ -78,7 +74,6 @@ export default function ResetEmailInp() {
         dispatch(setOtp(OTP));
       }
     } catch (error) {
-      console.log(error);
     }
   };
 

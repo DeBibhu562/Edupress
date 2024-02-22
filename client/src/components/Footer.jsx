@@ -24,25 +24,13 @@ export default function FooterCom() {
             <div>
               <Footer.Title title="About" />
               <Footer.LinkGroup col>
-                <Footer.Link
-                  href="/projects"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Our Blog
+                <Footer.Link href="/blogs" rel="noopener noreferrer">
+                  Our Blogs
                 </Footer.Link>
-                <Footer.Link
-                  href="/all-buissness"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Footer.Link href="/all-buissness" rel="noopener noreferrer">
                   All Buissness
                 </Footer.Link>
-                <Footer.Link
-                  href="/about-us"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Footer.Link href="/about-us" rel="noopener noreferrer">
                   The Educational Press
                 </Footer.Link>
               </Footer.LinkGroup>
@@ -57,7 +45,11 @@ export default function FooterCom() {
                 >
                   Facebook
                 </Footer.Link>
-                <Footer.Link href="https://www.instagram.com/theeducationpress">
+                <Footer.Link
+                  href="https://www.instagram.com/theeducationpress"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Instagram
                 </Footer.Link>
               </Footer.LinkGroup>
