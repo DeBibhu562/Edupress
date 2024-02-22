@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Reset() {
   const email = useSelector((state) => state.resetpass.email);
-  console.log("here is your mail", email);
   const password = useSelector((state) => state.resetpass.password);
 
   const [verified, setVerified] = useState(false);
@@ -21,11 +20,9 @@ export default function Reset() {
 
   const handleNPass = (e) => {
     setNpass(e.target.value);
-    console.log(npass);
   };
   const handleCPass = (e) => {
     setCpass(e.target.value);
-    console.log(cpass);
   };
 
   const changePassword = async (e) => {
