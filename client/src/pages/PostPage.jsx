@@ -69,7 +69,7 @@ export default function PostPage() {
         <meta charSet="utf-8" />
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
-        <link rel="canonical" href={`http://localhost:5173/post/${postSlug}`} />
+        <link rel="canonical" href={`https://www.theeducationpress.com/post/${postSlug}`} />
       </Helmet>
 
       <div className="flex flex-col-reverse md:flex-row-reverse">

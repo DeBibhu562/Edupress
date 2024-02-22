@@ -1,8 +1,15 @@
+import { Helmet } from 'react-helmet';
 import './main.css';
 
 export default function About() {
   return (
     <div className="min-h-screen flex items-center justify-center">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Best Coaching Institutes (All about Coaching Institutes)</title>
+        <meta name="description" content="Choose the best Coaching Institute / School / College / Tutor according to the requiremnets" />
+        <link rel="canonical" href={`https://www.theeducationpress.com/about-us`} />
+      </Helmet>
       <div className="max-w-5xl mx-auto p-3 text-center">
         <div className="about-us-container">
           <h1 className="about-us-title">ABOUT US</h1>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import CallToAction from "../components/CallToAction";
+import { Helmet } from "react-helmet";
 
 export default function Projects() {
   const [posts, setPosts] = useState([]);
@@ -46,6 +47,12 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen max-w-9xl mx-auto flex justify-center items-center flex-col gap-6 p-3">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Best Coaching Institutes (Get Enrolled In Best Classes)</title>
+        <meta name="description" content="Choose the best Coaching Institute / School / College / Tutor according to the requiremnets" />
+        <link rel="canonical" href={`https://www.theeducationpress.com/blogs`} />
+      </Helmet>
       <h1 className="text-3xl font-semibold">Blogs | Services</h1>
       <div className="w-full ">
         <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
