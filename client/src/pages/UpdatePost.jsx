@@ -176,16 +176,13 @@ export default function UpdatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        `/api/post/updatepost/${postId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch(`/api/post/updatepost/${postId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       const data = await res.json();
       if (!res.ok) {
         setPublishError(data.message);
@@ -223,9 +220,21 @@ export default function UpdatePost() {
             value={formData.category}
           >
             <option value="uncategorized">Select a category</option>
-            <option value="javascript">JavaScript</option>
-            <option value="reactjs">React.js</option>
-            <option value="nextjs">Next.js</option>
+            <option value="ENTRANCE EXAMS">ENTRANCE EXAMS</option>
+            <option value="GOVERNMENT EXAMS">GOVERNMENT EXAMS</option>
+            <option value="JOB TRAINING">JOB TRAINING</option>
+            <option value="SCHOOL">SCHOOL</option>
+            <option value="COLLEGE">COLLEGE </option>
+            <option value="COACHING INSTITUTE">COACHING INSTITUTE</option>
+            <option value="TUTOR">TUTOR</option>
+            <option value="LANGUAGE TRAINING">LANGUAGE TRAINING</option>
+            <option value="SCHOOL TUTIONS">SCHOOL TUTIONS</option>
+            <option value="PLAY SCHOOL">PLAY SCHOOL</option>
+            <option value="ACCOUNTS & FINANCE TRAINING">
+              ACCOUNTS & FINANCE TRAINING
+            </option>
+            <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
+            <option value="Others">Others</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
@@ -335,15 +344,13 @@ export default function UpdatePost() {
           />
         )}
         <TextInput
-            type='text'
-            placeholder='AdsLink'
-            value={formData.adslink}
-            id='adslink'
-            className='flex-1'
-            onChange={(value) =>
-              setFormData({ ...formData, adslink: value })
-            }
-          />
+          type="text"
+          placeholder="AdsLink"
+          value={formData.adslink}
+          id="adslink"
+          className="flex-1"
+          onChange={(value) => setFormData({ ...formData, adslink: value })}
+        />
         <JoditEditor
           ref={editor2}
           value={formData.content}
