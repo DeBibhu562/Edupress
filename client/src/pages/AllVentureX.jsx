@@ -59,7 +59,7 @@ export default function AllVentureX() {
         <meta charSet="utf-8" />
         <title>Best Coaching Institutes All Buissness</title>
         <meta name="description" content="Choose the best Coaching Institute / School / College / Tutor according to the requiremnets" />
-        <link rel="canonical" href={`https://www.theeducationpress.com/all-buissness`} />
+        <link rel="canonical" href={`https://www.theeducationpress.com/all-business`} />
       </Helmet>
       <h1 className="text-3xl font-semibold">All Institute | Buissness</h1>
       <div className="w-full ">
