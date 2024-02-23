@@ -234,6 +234,7 @@ export default function UpdatePost() {
               ACCOUNTS & FINANCE TRAINING
             </option>
             <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
+            <option value="BLOGS">BLOGS</option>
             <option value="Others">Others</option>
           </Select>
         </div>

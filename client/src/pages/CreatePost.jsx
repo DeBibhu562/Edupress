@@ -203,7 +203,8 @@ export default function CreatePost() {
             <option value="SCHOOL TUTIONS">SCHOOL TUTIONS</option>
             <option value="PLAY SCHOOL">PLAY SCHOOL</option>
             <option value="ACCOUNTS & FINANCE TRAINING">ACCOUNTS & FINANCE TRAINING</option>
-            <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
+            <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
+            <option value="BLOGS">BLOGS</option>
             <option value="Others">Others</option>
           </Select>
         </div>
