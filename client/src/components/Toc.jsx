@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import './Toc.css'
 
 const TOC = ({ postContent, setModifiedContent }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +53,7 @@ const TOC = ({ postContent, setModifiedContent }) => {
       <div className="flex gap-2 items-center">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="hover:bg-gray-100 rounded-lg p-2"
+          className="hover:bg-gray-100 rounded-lg p-2 toc-btn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +80,7 @@ const TOC = ({ postContent, setModifiedContent }) => {
             <button
               key={heading.id}
               style={{ paddingLeft: heading.level * 7 + "px" }}
-              className={`flex w-full my-1 py-2 pr-2 rounded-md font-bold ${
+              className={`toc flex w-full my-1 py-2 pr-2 rounded-md font-bold ${
                 currentHeadingID === heading.id
                   ? "bg-[#081b4b] text-white text-left"
                   : "hover:bg-gray-100"

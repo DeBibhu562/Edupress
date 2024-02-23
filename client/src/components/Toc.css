@@ -1,0 +1,11 @@
+.dark .toc{
+    color: aliceblue;
+}
+.dark .toc:hover{
+    color: aliceblue;
+    background-color: rgb(75, 71, 71);
+}
+.dark .toc-btn:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(46, 48, 52);
+}

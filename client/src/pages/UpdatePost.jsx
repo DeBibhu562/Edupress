@@ -177,7 +177,7 @@ export default function UpdatePost() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `/api/post/updatepost/${postId}/${currentUser._id}`,
+        `/api/post/updatepost/${postId}`,
         {
           method: "PUT",
           headers: {
