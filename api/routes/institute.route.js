@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/createInstitute', verifyToken, createInstitute)
 router.get('/getInstitute', getInstitute)
-router.delete('/deleteinstitute/:postId/:userId', verifyToken, deleteInstitute)
-router.put('/updateinstitute/:postId/:userId', verifyToken, updateInstitute)
+router.delete('/deleteinstitute/:postId', verifyToken, deleteInstitute)
+router.put('/updateinstitute/:postId', verifyToken, updateInstitute)
 
 
 export default router;

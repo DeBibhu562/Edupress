@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { set } from "mongoose";
 
 export default function DashVentureX() {
   const { currentUser } = useSelector((state) => state.user);
@@ -14,13 +13,15 @@ export default function DashVentureX() {
   useEffect(() => {
     const fetchInstitute = async () => {
       try {
-        const res = await fetch(
-          `/api/institute/getInstitute?userId=${currentUser._id}`
-        );
+        const res = await fetch(`/api/institute/getInstitute`);
         const data = await res.json();
-        console.log(data);
         if (res.ok) {
-          setVenturexPosts(data.institute);
+          setVenturexPosts(
+            data.institute.filter(
+              (institute) =>
+                currentUser.isAdmin || institute.userId === currentUser._id
+            )
+          );
           if (data.institute.length < 9) {
             setShowMore(false);
           }
@@ -31,17 +32,23 @@ export default function DashVentureX() {
     };
 
     fetchInstitute();
-  }, [currentUser._id]);
+  }, [currentUser.isAdmin, currentUser._id]);
 
   const handleShowMore = async () => {
     const startIndex = userVenturex.length;
     try {
       const res = await fetch(
-        `/api/institute/getInstitute?userId=${currentUser._id}&startIndex=${startIndex}`
+        `/api/institute/getInstitute?startIndex=${startIndex}`
       );
       const data = await res.json();
       if (res.ok) {
-        setVenturexPosts((prev) => [...prev, ...data.institute]);
+        setVenturexPosts((prev) => [
+          ...prev,
+          ...data.institute.filter(
+            (institute) =>
+              currentUser.isAdmin || institute.userId === currentUser._id
+          ),
+        ]);
         if (data.institute.length < 9) {
           setShowMore(false);
         }
@@ -53,9 +60,10 @@ export default function DashVentureX() {
 
   const handleDeleteInstitute = async () => {
     setShowModal(false);
+
     try {
       const res = await fetch(
-        `/api/institute/deleteinstitute/${instituteIdToDelete}/${currentUser._id}`,
+        `/api/institute/deleteinstitute/${instituteIdToDelete}`,
         {
           method: "DELETE",
         }
@@ -75,7 +83,7 @@ export default function DashVentureX() {
 
   return (
     <div className="table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
-      { userVenturex.length > 0 ? (
+      {userVenturex.length > 0 ? (
         <>
           <Table hoverable className="shadow-md">
             <Table.Head>
@@ -94,15 +102,6 @@ export default function DashVentureX() {
                   <Table.Cell>
                     {new Date(institute.updatedAt).toLocaleDateString()}
                   </Table.Cell>
-                  {/* <Table.Cell>
-                    <Link to={`/institute/${institute.slug}`}>
-                      <img
-                        src={institute.image}
-                        alt={institute.title}
-                        className='w-20 h-10 object-cover bg-gray-500'
-                      />
-                    </Link>
-                  </Table.Cell> */}
                   <Table.Cell>
                     <Link
                       className="font-medium text-gray-900 dark:text-white"

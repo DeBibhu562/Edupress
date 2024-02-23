@@ -132,9 +132,7 @@ export default function UpdateVentureX() {
     try {
       const fetchInstitute = async () => {
         const res = await fetch(`/api/institute/getInstitute?instituteId=${postId}`);
-
         const data = await res.json();
-        console.log(data);
         if (!res.ok) {
           console.log(data.message);
           setPublishError(data.message);
@@ -142,10 +140,9 @@ export default function UpdateVentureX() {
         }
         if (res.ok) {
           setPublishError(null);
-          setFormData(data.institute[0]);
+          setFormData(data.institute && data.institute.length > 0 ? data.institute.find(item => item._id === postId) || {} : {});
         }
       };
-
       fetchInstitute();
     } catch (error) {
       console.log(error.message);
@@ -156,7 +153,7 @@ export default function UpdateVentureX() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `/api/institute/updateinstitute/${postId}/${currentUser._id}`,
+        `/api/institute/updateinstitute/${postId}`,
         {
           method: "PUT",
           headers: {
@@ -194,6 +191,15 @@ export default function UpdateVentureX() {
             value={formData.name}
           />
         </div>
+        <TextInput
+            type="text"
+            placeholder="slug-url"
+            required
+            id="slug"
+            className="flex-1"
+            onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+            value={formData.slug}
+          />
         <Select
           onChange={(e) =>
             setFormData({ ...formData, category: e.target.value })

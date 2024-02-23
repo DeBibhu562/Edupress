@@ -84,6 +84,7 @@ export const updateInstitute = async (req, res, next) => {
       {
         $set: {
           name: req.body.name,
+          slug: req.body.slug,
           about: req.body.about,
           category: req.body.category,
           owner: req.body.owner,
