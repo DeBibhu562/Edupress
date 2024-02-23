@@ -350,7 +350,9 @@ export default function UpdatePost() {
           value={formData.adslink}
           id="adslink"
           className="flex-1"
-          onChange={(value) => setFormData({ ...formData, adslink: value })}
+          onChange={(e) =>
+            setFormData({ ...formData, adslink: e.target.value })
+          }
         />
         <JoditEditor
           ref={editor2}

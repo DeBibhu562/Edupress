@@ -37,7 +37,7 @@ const postSchema = new mongoose.Schema(
     adslink: {
       type: String,
       default:
-        "https://www.theeducationpress.com/assets/INDIA'S%20NO%201%20EDUCATIONAL%20NEWSPAPER_20240217_143216_0000-Lxyk_ILz.png",
+        "https://www.theeducationpress.com/",
     },
     category: {
       type: String,
