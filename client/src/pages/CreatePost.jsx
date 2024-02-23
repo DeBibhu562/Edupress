@@ -317,7 +317,6 @@ export default function CreatePost() {
         <TextInput
           type="text"
           placeholder="AdsLink"
-          required
           id="adslink"
           className="flex-1"
           onChange={(e) =>

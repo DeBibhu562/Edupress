@@ -72,7 +72,7 @@ export default function PostPage() {
         <link rel="canonical" href={`https://www.theeducationpress.com/post/${postSlug}`} />
       </Helmet>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row-reverse">
         <div className="w-[65%] blog-content">
           <h1 className="text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl">
             {post && post.title}
