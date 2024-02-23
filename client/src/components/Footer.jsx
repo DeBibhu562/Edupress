@@ -27,8 +27,8 @@ export default function FooterCom() {
                 <Footer.Link href="/blogs" rel="noopener noreferrer">
                   Our Blogs
                 </Footer.Link>
-                <Footer.Link href="/all-buissness" rel="noopener noreferrer">
-                  All Buissness
+                <Footer.Link href="/all-business" rel="noopener noreferrer">
+                  All Business
                 </Footer.Link>
                 <Footer.Link href="/about-us" rel="noopener noreferrer">
                   The Educational Press

@@ -331,6 +331,16 @@ export default function CreatePost() {
             setFormData({ ...formData, content: value });
           }}
         />
+        <TextInput
+          type="text"
+          placeholder="PermaLink"
+          required
+          id="permalink"
+          className="flex-1"
+          onChange={(e) =>
+            setFormData({ ...formData, slug: e.target.value })
+          }
+        />
         <Textarea
           type="text"
           placeholder="Description within 150 Chracter"

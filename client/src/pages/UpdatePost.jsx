@@ -359,6 +359,18 @@ export default function UpdatePost() {
             setFormData({ ...formData, content: value });
           }}
         />
+        <TextInput
+          type="text"
+          placeholder="PermaLink"
+          required
+          id="slug"
+          className="flex-1"
+          maxLength={150}
+          onChange={(e) =>
+            setFormData({ ...formData, slug: e.target.value })
+          }
+          value={formData.slug}
+        />
         <Textarea
           type="textarea"
           placeholder="Description"

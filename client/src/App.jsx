@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/privicy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-condition" element={<TermsCondition />} />
         <Route path="/blogs" element={<Projects />} />
-        <Route path="/all-buissness" element={<AllVentureX />} />
+        <Route path="/all-business" element={<AllVentureX />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/guest-post" element={<GuestPost />} />
         <Route path="/sign-in" element={<SignIn />} />
