@@ -57,19 +57,19 @@ export default function AllVentureX() {
     <div className="min-h-screen max-w-9xl mx-auto flex justify-center items-center flex-col gap-6 p-3">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Best Coaching Institutes All Buissness</title>
+        <title>Best Coaching Institutes All Business</title>
         <meta name="description" content="Choose the best Coaching Institute / School / College / Tutor according to the requiremnets" />
         <link rel="canonical" href={`https://www.theeducationpress.com/all-business`} />
       </Helmet>
-      <h1 className="text-3xl font-semibold">All Institute | Buissness</h1>
+      <h1 className="text-3xl font-semibold">All Institute | Business</h1>
       <div className="w-full ">
         <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
-          Buissness Listings:
+          Business Listings:
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
           {!loading && institutes.length === 0 && (
             <p className="text-xl text-gray-500">
-              No Institute/Buissness found.
+              No Institute/Business found.
             </p>
           )}
           {loading && <p className="text-xl text-gray-500">Loading...</p>}
