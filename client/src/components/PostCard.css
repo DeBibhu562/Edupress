@@ -1,0 +1,17 @@
+@media screen and (max-width: 480px) {
+    .postcard{
+        height: 385px !important;
+    }
+    .postcard:hover{
+        height: 350px !important;
+    }
+    .postimg{
+        height: 230px !important;
+    }
+    .postcard:hover .postimg {
+        height: 200px !important; 
+    }
+    .postimg {
+        height: auto !important;
+    }
+}
