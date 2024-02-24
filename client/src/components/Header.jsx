@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
-import logo from "../images/The Education Press logo - Transparent.png"; 
+import logo from "../images/The-Education-Press-logo-Transparent.webp"; 
 
 export default function Header() {
   const path = useLocation().pathname;

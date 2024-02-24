@@ -2,7 +2,7 @@ import { Footer } from "flowbite-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
-import logo from "../images/The Education Press logo - Transparent.png";
+import logo from "../images/The-Education-Press-logo-Transparent.webp";
 
 export default function FooterCom() {
   const [loaded, setLoaded] = useState(false);
