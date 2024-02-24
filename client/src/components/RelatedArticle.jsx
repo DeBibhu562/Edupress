@@ -11,7 +11,7 @@ export default function RelatedArticle({ post }) {
         <h4>
           <Link to={`/post/${post.slug}`}>{post.title}</Link>
         </h4>
-        <time style={{fontSize:"10px"}} dateTime={post.createdAt}>{post.createdAt}</time>
+        <time style={{fontSize:"10px"}} dateTime={post.daypost}>{new Date(post.daypost).toLocaleDateString()}</time>
       </div>
     </div></Card>
   );

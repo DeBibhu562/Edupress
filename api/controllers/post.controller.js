@@ -96,6 +96,7 @@ export const updatepost = async (req, res, next) => {
           adsimage1: req.body.adsimage1,
           adsimage2: req.body.adsimage2,
           adslink: req.body.adslink,
+          daypost:req.body.daypost,
         },
       },
       { new: true }

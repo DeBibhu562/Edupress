@@ -48,6 +48,10 @@ const postSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    daypost: {
+      type: Date,
+      default: Date.now
+    }
   },
   { timestamps: true }
 );

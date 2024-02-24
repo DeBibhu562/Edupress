@@ -177,9 +177,9 @@ export default function UpdatePost() {
   };
 
   const deleteImage = async (key) => {
-      setFormData({ ...formData, [key]: "" });
-      setImageUploadProgress(null);
-      setImageUploadError(null);
+    setFormData({ ...formData, [key]: "" });
+    setImageUploadProgress(null);
+    setImageUploadError(null);
   };
 
   const handleSubmit = async (e) => {
@@ -426,6 +426,16 @@ export default function UpdatePost() {
             setFormData({ ...formData, description: e.target.value })
           }
           value={formData.description}
+        />
+        <TextInput
+          type="date" 
+          placeholder="Select Date"
+          id="daypost"
+          className="flex-1"
+          onChange={
+            (e) => setFormData({ ...formData, daypost: e.target.value }) // Update state for daypost
+          }
+          value={formData.daypost}
         />
 
         <Button type="submit" gradientDuoTone="purpleToPink">

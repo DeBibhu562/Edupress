@@ -202,7 +202,9 @@ export default function CreatePost() {
             <option value="LANGUAGE TRAINING">LANGUAGE TRAINING</option>
             <option value="SCHOOL TUTIONS">SCHOOL TUTIONS</option>
             <option value="PLAY SCHOOL">PLAY SCHOOL</option>
-            <option value="ACCOUNTS & FINANCE TRAINING">ACCOUNTS & FINANCE TRAINING</option>
+            <option value="ACCOUNTS & FINANCE TRAINING">
+              ACCOUNTS & FINANCE TRAINING
+            </option>
             <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
             <option value="BLOGS">BLOGS</option>
             <option value="Others">Others</option>
@@ -336,9 +338,7 @@ export default function CreatePost() {
           required
           id="permalink"
           className="flex-1"
-          onChange={(e) =>
-            setFormData({ ...formData, slug: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
         />
         <Textarea
           type="text"
@@ -349,6 +349,15 @@ export default function CreatePost() {
           maxLength={150}
           onChange={(e) =>
             setFormData({ ...formData, description: e.target.value })
+          }
+        />
+        <TextInput
+          type="date" 
+          placeholder="Select Date" 
+          id="daypost"
+          className="flex-1"
+          onChange={
+            (e) => setFormData({ ...formData, daypost: e.target.value }) // Update state for daypost
           }
         />
         <Button type="submit" gradientDuoTone="purpleToPink">
