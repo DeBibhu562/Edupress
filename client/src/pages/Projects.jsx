@@ -42,7 +42,7 @@ export default function Projects() {
   }, [startIndex]);
 
   const handleShowMore = async () => {
-    setStartIndex((prevIndex) => prevIndex + 9);
+    setStartIndex((prevIndex) => prevIndex + 6);
   };
 
   return (
@@ -58,7 +58,7 @@ export default function Projects() {
         <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
           Posts results:
         </h1>
-        <div className="p-7 flex flex-wrap gap-4">
+        <div className="p-7 flex flex-wrap gap-4" data-aos="fade" data-aos-delay="100">
           {!loading && posts.length === 0 && (
             <p className="text-xl text-gray-500">No posts found.</p>
           )}

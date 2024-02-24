@@ -1,11 +1,21 @@
 import { Footer } from "flowbite-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 import logo from "../images/The Education Press logo - Transparent.png";
 
 export default function FooterCom() {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setLoaded(true);
+  };
+
   return (
-    <Footer container className="border border-t-8 border-teal-500">
+    <Footer
+      container
+      className={`border border-t-8 border-teal-500 ${loaded ? "" : "hidden"}`}
+    >
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid w-full justify-between sm:flex md:grid-cols-1">
           <div className="mt-5">
@@ -16,7 +26,7 @@ export default function FooterCom() {
               <img
                 src={logo}
                 alt="education press"
-                className="w-[320px] h-full"
+                className={`w-[320px] h-full ${loaded ? "" : "hidden"}`}
               />
             </Link>
           </div>
