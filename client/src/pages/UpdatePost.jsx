@@ -10,11 +10,13 @@ import JoditEditor from "jodit-react";
 import "./CreatePost.css";
 
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+
 import { app } from "../firebase";
 import { useEffect, useRef, useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -173,6 +175,13 @@ export default function UpdatePost() {
       console.log(error);
     }
   };
+
+  const deleteImage = async (key) => {
+      setFormData({ ...formData, [key]: "" });
+      setImageUploadProgress(null);
+      setImageUploadError(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -344,6 +353,41 @@ export default function UpdatePost() {
             className="w-full h-72 object-cover"
           />
         )}
+        {formData.image && (
+          <div className="flex items-center">
+            <img
+              src={formData.image}
+              alt="Uploaded"
+              className="w-32 h-32 mr-4"
+            />
+            <Button onClick={() => deleteImage("image")}>Delete Image</Button>
+          </div>
+        )}
+        {formData.adsimage1 && (
+          <div className="flex items-center">
+            <img
+              src={formData.adsimage1}
+              alt="Uploaded"
+              className="w-32 h-32 mr-4"
+            />
+            <Button onClick={() => deleteImage("adsimage1")}>
+              Delete Image
+            </Button>
+          </div>
+        )}
+        {formData.adsimage2 && (
+          <div className="flex items-center">
+            <img
+              src={formData.adsimage2}
+              alt="Uploaded"
+              className="w-32 h-32 mr-4"
+            />
+            <Button onClick={() => deleteImage("adsimage2")}>
+              Delete Image
+            </Button>
+          </div>
+        )}
+
         <TextInput
           type="text"
           placeholder="AdsLink"
@@ -368,9 +412,7 @@ export default function UpdatePost() {
           id="slug"
           className="flex-1"
           maxLength={150}
-          onChange={(e) =>
-            setFormData({ ...formData, slug: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
           value={formData.slug}
         />
         <Textarea

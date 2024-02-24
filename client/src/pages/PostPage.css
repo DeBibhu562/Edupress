@@ -9,4 +9,8 @@
     .recent-posts{
         display: none;
     }
+    .post-content a{
+        color: rgb(0 36 255) !important;
+        cursor: pointer !important;
+    }
 }
