@@ -27,7 +27,7 @@ export default function Projects() {
           const data = await res.json();
           setPosts((prevPosts) => [...prevPosts, ...data.posts]);
           setLoading(false);
-          if (data.posts.length === 0) {
+          if (data.posts.length < 6) {
             setShowMore(false);
           }
         } else {

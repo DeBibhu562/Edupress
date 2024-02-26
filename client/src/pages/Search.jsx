@@ -14,6 +14,7 @@ export default function Search() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const location = useLocation();
 
@@ -92,7 +93,7 @@ export default function Search() {
     if (res.ok) {
       const data = await res.json();
       setPosts([...posts, ...data.posts]);
-      if (data.posts.length === 9) {
+      if (data.posts.length < 6) {
         setShowMore(true);
       } else {
         setShowMore(false);
@@ -136,10 +137,23 @@ export default function Search() {
               value={sidebarData.category}
               id="category"
             >
-              <option value="uncategorized">Uncategorized</option>
-              <option value="reactjs">React.js</option>
-              <option value="nextjs">Next.js</option>
-              <option value="javascript">JavaScript</option>
+              <option value="uncategorized">Select a category</option>
+              <option value="ENTRANCE EXAMS">ENTRANCE EXAMS</option>
+              <option value="GOVERNMENT EXAMS">GOVERNMENT EXAMS</option>
+              <option value="JOB TRAINING">JOB TRAINING</option>
+              <option value="SCHOOL">SCHOOL</option>
+              <option value="COLLEGE">COLLEGE </option>
+              <option value="COACHING INSTITUTE">COACHING INSTITUTE</option>
+              <option value="TUTOR">TUTOR</option>
+              <option value="LANGUAGE TRAINING">LANGUAGE TRAINING</option>
+              <option value="SCHOOL TUTIONS">SCHOOL TUTIONS</option>
+              <option value="PLAY SCHOOL">PLAY SCHOOL</option>
+              <option value="ACCOUNTS & FINANCE TRAINING">
+                ACCOUNTS & FINANCE TRAINING
+              </option>
+              <option value="OVERSEAS EDUCATION">OVERSEAS EDUCATION</option>
+              <option value="BLOGS">BLOGS</option>
+              <option value="Others">Others</option>
             </Select>
           </div>
           <Button type="submit" outline gradientDuoTone="purpleToPink">
